@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 
 /**
  * Created with IntelliJ IDEA
- * 四喜服务专用注解
+ * 鱼de服务专用注解
  *
  * @author 喵♂呜
  * Created on 2018/3/22 14:13.
