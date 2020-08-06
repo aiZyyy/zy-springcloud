@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+  cloud:
+    config:
+      label: master
+      enabled: true
+      server:
+        git:
+          uri: ${GIT_URL:https://github.com/aiZyyy/zy-config.git}
+          username: ${GIT_USER:13100650510}
+          password: ${GIT_PASS:*********}
+  #          search-paths: respo
+  # 默认的RabbitMQ服务器
+  rabbitmq:
+    host: ${RABBITMQ_HOST:127.0.0.1}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
+
+server:
+  port: ${PORT:8083}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URL:http://localhost:8081/eureka}
+  instance:
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+
+info:
+  app.name: ${spring.application.name}
+  company.name: itzy
+
+# 管理端点
+management:
+  endpoint:
+    shutdown:
+      # 开启 Shutdown 端点
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # 开启所有端点
+        include:
+          - '*'
+

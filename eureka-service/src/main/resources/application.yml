@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: eureka-service
+  profiles:
+    active: dev
+
+server:
+  port: 8081
+
+eureka:
+  instance:
+    hostname: ${spring.cloud.client.ip-address}
+    prefer-ip-address: true
+    instanceId: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+  client:
+    # 关闭获取清单
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+info:
+  app.name: ${spring.application.name}
+  company.name: itzy
+
+# 管理端点
+management:
+  endpoint:
+    shutdown:
+      # 开启 Shutdown 端点
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        # 开启所有端点
+        include:
+          - '*'
