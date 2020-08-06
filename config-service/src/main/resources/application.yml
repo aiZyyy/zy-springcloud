@@ -9,7 +9,7 @@ spring:
         git:
           uri: ${GIT_URL:https://github.com/aiZyyy/zy-config.git}
           username: ${GIT_USER:13100650510}
-          password: ${GIT_PASS:*********}
+          password: ${GIT_PASS:zy123aaa!}
   #          search-paths: respo
   # 默认的RabbitMQ服务器
   rabbitmq:
