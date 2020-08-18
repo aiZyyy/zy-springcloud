@@ -1,8 +1,12 @@
 package com.itzy.baseesservice.config;
 
+import org.apache.http.Header;
 import org.apache.http.HttpHost;
+import org.apache.http.message.BasicHeader;
 import org.elasticsearch.client.RestClient;
+import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,11 +27,39 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableConfigurationProperties
 public class BaseElasticsearchConfig {
+
+    @Value("${elasticsearch.hostname}")
+    private String hostname;
+
+    @Value("${elasticsearch.port}")
+    private int port;
+
+    /**
+     * LowLevelRestConfig
+     *
+     * @param
+     * @date 2019/8/12 18:56
+     */
     @Bean
-    public RestHighLevelClient esRestHighLevelClient() {
-        RestHighLevelClient client = new RestHighLevelClient(
-                // 这里可以配置多个 es服务，我当前服务不是集群，所以目前只配置一个
-                RestClient.builder(new HttpHost("122.51.211.252", 9200, "http")));
-        return client;
+    public RestClient restClient() {
+        // 如果有多个从节点可以持续在内部new多个HttpHost，参数1是IP，参数2是端口，参数3是通信协议
+        RestClientBuilder clientBuilder = RestClient.builder(new HttpHost(hostname, port, "http"));
+        // 设置Header编码
+        Header[] defaultHeaders = {new BasicHeader("content-type", "application/json")};
+        clientBuilder.setDefaultHeaders(defaultHeaders);
+        // 添加其他配置，这些配置都是可选的，详情配置可看https://blog.csdn.net/jacksonary/article/details/82729556
+        return clientBuilder.build();
+    }
+
+    /**
+     * HighLevelRestConfig
+     *
+     * @param
+     * @date 2019/8/12 18:56
+     */
+    @Bean
+    public RestHighLevelClient restHighLevelClient() {
+        // 如果有多个从节点可以持续在内部new多个HttpHost，参数1是IP，参数2是端口，参数3是通信协议
+        return new RestHighLevelClient(RestClient.builder(new HttpHost(hostname, port, "http")));
     }
 }

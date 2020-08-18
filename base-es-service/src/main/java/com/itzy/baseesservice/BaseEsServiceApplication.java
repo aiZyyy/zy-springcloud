@@ -1,7 +1,7 @@
 package com.itzy.baseesservice;
 
+import com.itzy.commonservice.annotation.ZyMicroServiceApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.cloud.client.SpringCloudApplication;
 
 /**
  * @author ZY
@@ -9,7 +9,7 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @Description:
  * @Version 1.0
  */
-@SpringCloudApplication
+@ZyMicroServiceApplication
 public class BaseEsServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(BaseEsServiceApplication.class, args);
