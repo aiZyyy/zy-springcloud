@@ -2,7 +2,7 @@
 # 服务组名称(包名第三段)
 GROUP='modules'
 # 服务名称(包名第四段)
-SERVER='packetStatus'
+SERVER='flow'
 # 指定对应文件生成目录(如果不是微服务项目 请自行修改完整包名)
 TARGET_ENTITY="com.hd.rtu.${GROUP}.${SERVER}.entity"
 TARGET_MAPPER="com.hd.rtu.${GROUP}.${SERVER}.mapper"
@@ -19,7 +19,7 @@ DB_USER="root"
 DB_PASS="123456789Aa"
 
 # 表名 多个表用空格分隔 所有的表用 % 代替
-TABLES='sys_st_role'
+TABLES='rtu_flow_current'
 
 ###############################
 # 请勿修改以下部分代码 除非你看得懂 #

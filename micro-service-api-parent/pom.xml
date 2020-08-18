@@ -6,15 +6,28 @@
         <artifactId>micro-servcie-parent</artifactId>
         <groupId>com.itzy</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../micro-service-parent/pom.xml</relativePath>
+        <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.itzy</groupId>
     <artifactId>micro-service-api-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <name>${project.artifactId}</name>
     <description>鱼de微服务API父工程</description>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
