@@ -1,9 +1,9 @@
 package com.itzy.springclouddemo;
 
+import com.itzy.commonservice.annotation.ZyMicroServiceApplication;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@ZyMicroServiceApplication
 public class SpringcloudDemoApplication {
 
     public static void main(String[] args) {

@@ -13,7 +13,7 @@ import java.util.Optional;
  * Created with IntelliJ IDEA
  */
 public class FeignInterceptor implements RequestInterceptor {
-    @Value("${itzy-micro-service.feign.proxy.header:Cookie,Authorization}")
+    @Value("${itzy-micro-service-common.feign.proxy.header:Cookie,Authorization}")
     private String[] proxyHeader;
 
     @Override
