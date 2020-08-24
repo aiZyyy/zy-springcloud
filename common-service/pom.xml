@@ -41,7 +41,7 @@
         <codehua.jackson.version>1.9.13</codehua.jackson.version>
         <dozer.verison>5.5.1</dozer.verison>
         <fastjson.version>1.2.73</fastjson.version>
-        <mysql.version>5.1.49</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <lombok.version>1.18.12</lombok.version>
         <zxing.version>3.3.3</zxing.version>
         <jjwt.version>0.9.1</jjwt.version>

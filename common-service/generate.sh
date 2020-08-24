@@ -2,7 +2,7 @@
 # 服务组名称(包名第三段)
 GROUP='modules'
 # 服务名称(包名第四段)
-SERVER='flow'
+SERVER='angle'
 # 指定对应文件生成目录(如果不是微服务项目 请自行修改完整包名)
 TARGET_ENTITY="com.hd.rtu.${GROUP}.${SERVER}.entity"
 TARGET_MAPPER="com.hd.rtu.${GROUP}.${SERVER}.mapper"
@@ -19,13 +19,13 @@ DB_USER="root"
 DB_PASS="123456789Aa"
 
 # 表名 多个表用空格分隔 所有的表用 % 代替
-TABLES='rtu_flow_current'
+TABLES='rtu_angle_current'
 
 ###############################
 # 请勿修改以下部分代码 除非你看得懂 #
 ###############################
 # 链接字符串
-CONNECTION_URL="jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false"
+CONNECTION_URL="jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;allowMultiQueries=true&amp;serverTimezone=Asia/Shanghai"
 
 # 代码生成根目录
 TARGET_ROOT=target/mybatis-generator/${SERVER}
@@ -69,6 +69,8 @@ cat > generator.xml <<EOF
                         connectionURL="${CONNECTION_URL}"
                         userId="${DB_USER}"
                         password="${DB_PASS}">
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true" />
         </jdbcConnection>
         <javaTypeResolver>
             <!-- 设置 DECIMAL 和 NUMERIC 类型解析为 java.math.BigDecimal -->
