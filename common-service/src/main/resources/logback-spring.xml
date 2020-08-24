@@ -123,10 +123,10 @@
     </appender>
 
     <!-- 调试日志记录 -->
-    <logger name="com.sixi" level="DEBUG"/>
+    <logger name="com.itzy" level="DEBUG"/>
     <logger name="org.springframework.data.mongodb.core" level="DEBUG"/>
     <!-- 异常日志记录 -->
-    <logger name="com.sixi.micro.common.exception.handler" level="DEBUG">
+    <logger name="com.itzy.commonservice.exception.handler" level="DEBUG">
         <appender-ref ref="EXCEPTION_FILE"/>
     </logger>
     <!-- 全局日志记录 -->
